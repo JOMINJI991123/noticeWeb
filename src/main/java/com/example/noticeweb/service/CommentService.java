@@ -1,6 +1,5 @@
 package com.example.noticeweb.service;
 
-import com.example.noticeweb.annotation.RunningTime;
 import com.example.noticeweb.dto.CommentDto;
 import com.example.noticeweb.entity.Article;
 import com.example.noticeweb.entity.Comment;
@@ -54,7 +53,6 @@ public class CommentService {
         return CommentDto.createCommentDto(updated);
     }
 
-    @RunningTime
     @Transactional
     public CommentDto delete(Long id) {
         Comment target = commentRepository.findById(id)

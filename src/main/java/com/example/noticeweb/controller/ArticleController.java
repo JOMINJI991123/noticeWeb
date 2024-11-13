@@ -19,7 +19,6 @@ import java.util.List;
 @Controller
 @Slf4j
 public class ArticleController {
-
     @Autowired
     private CommentService commentService;
     @Autowired
@@ -31,27 +30,19 @@ public class ArticleController {
 
     @PostMapping("/articles/create")
     public String createArticle(ArticleForm form){
-        log.info(form.toString());
         Article article = form.toEntity();
-        log.info(article.toString());
         Article saved = articleRepository.save(article);
-        log.info(saved.toString());
         return "redirect:/articles";
     }
 
     @GetMapping("/articles/{id}")
     public String show(@PathVariable("id") Long id, Model model){
-        log.info("id="+id);
 
         Article articeEntity = articleRepository.findById(id).orElse(null);
-
         List<CommentDto> commentDtos = commentService.comments(id);
 
         model.addAttribute("commentDtos",commentDtos);
-        log.info(articeEntity.toString());
         model.addAttribute("article", articeEntity);
-
-
         return "articles/show";
     }
 

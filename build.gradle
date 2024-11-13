@@ -21,6 +21,9 @@ dependencies {
 	// PostgreSQL 드라이버 추가
 	runtimeOnly 'org.postgresql:postgresql'
 
+	//mysql 드라이버 추가
+	implementation 'mysql:mysql-connector-java:8.0.32'
+
 	compileOnly 'org.projectlombok:lombok:1.18.34'
 	annotationProcessor 'org.projectlombok:lombok:1.18.34'
 
