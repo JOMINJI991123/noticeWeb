@@ -3,6 +3,7 @@
         <div class="card m-2" id="comments-{{id}}">
             <div class ="card-header">
                 {{nickname}}
+                <div style="float: right;">
                 <!-- 수정버튼 -->
                 <button type="button"
                         class="btn btn-sm btn-outline-primary"
@@ -19,6 +20,7 @@
                         data-comment-id="{{id}}"
 
                 >삭제</button>
+                </div>
             </div>
             <div class="card-body">
                 {{body}}
@@ -27,13 +29,11 @@
     {{/commentDtos}}
 </div>
 
-
- Modal
 <div class="modal fade" id="comment-edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">댓글 수정</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -51,7 +51,7 @@
                     <input type="hidden" id="edit-comment-article-id">
 
 
-                    <button type="button" class="btn btn-outline-primary btn-sm" id="comment-update-btn">수정완료</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" style="float: right;" id="comment-update-btn">수정완료</button>
                 </form>
             </div>
         </div>

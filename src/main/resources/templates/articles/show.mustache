@@ -1,25 +1,17 @@
 {{>layouts/header}}
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-    </tr>
-    </thead>
-    <tbody>
+<div style="margin:20px 60px 20px 60px; padding:20px;">
     {{#article}}
-    <tr>
-        <th>{{id}}</th>
-        <td>{{title}}</td>
-        <td>{{content}}</td>
-    </tr>
-    {{/article}}
-    </tbody>
-</table>
-<a href="/articles/{{article.id}}/edit">edit</a>
-<a href="/articles/{{article.id}}/delete">delete</a>
-<a href="/articles">Go to articleList</a>
+    <h2 style="margin:10px">{{title}}</h2>
+    <hr>
+    <div style="margin:10px 10px 30px 10px">{{content}}</div>
 
-{{>comments/_comments}}
+    <div style="text-align: right; margin:10px">
+    <a class="btn btn-primary" href="/articles/{{id}}/edit">수정</a>
+    <a class="btn btn-danger" href="/articles/{{id}}/delete">삭제</a>
+    </div>
+
+    {{/article}}
+    <hr>
+    {{>comments/_comments}}
+</div>
 {{>layouts/footer}}

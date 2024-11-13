@@ -1,14 +1,19 @@
 {{>layouts/header}}
-<form action="/articles/create" method="post">
+<form action="/articles/create" method="post" style="margin:40px 80px 40px 80px">
 
-    <input type="text" name="title">
+    <div class="mb-3">
+        <label for="titleLabel" class="form-label">제목</label>
+        <input id="titleLabel" type="text" class="form-control" name="title">
+    </div>
+    <div class="mb-3">
+        <label for="contentLabel" class="form-label">내용</label>
+        <textarea id="contentLabel" class="form-control" name="content" rows="3"></textarea>
+    </div>
 
-    <textarea name="content"></textarea>
+    <a class="btn btn-primary" href="/articles" role="button">이전</a>
 
-    <button type="submit">제출</button>
+    <button class="btn btn-primary" type="submit">등록</button>
 
-    <a href="/articles">back</a>
 </form>
-
 
 {{>layouts/footer}}

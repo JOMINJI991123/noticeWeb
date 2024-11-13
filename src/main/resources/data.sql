@@ -1,4 +1,4 @@
-INSERT INTO article(content,title) VALUES('당신의 소울푸드','?');
+INSERT INTO article(content,title) VALUES('당신의 소울푸드','gg');
 --INSERT INTO article(title,content) VALUES('rddrrr','rrrr');
 --
 --
