@@ -6,17 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
 @Data
 public class ArticleForm {
+    private long id;
     private String title;
     private String content;
-    private long id;
+    private LocalDateTime createdDate;
+    private Long views;
 
     public Article toEntity() {
 
-        return new Article (id, title, content);
+        return new Article (null, title, content,null,0l);
     }
 }

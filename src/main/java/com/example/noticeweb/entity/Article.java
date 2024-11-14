@@ -1,16 +1,18 @@
 package com.example.noticeweb.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Getter
+@Setter
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +21,11 @@ public class Article {
     private String title;
     @Column
     private String content;
+    @CreationTimestamp
+    @Column
+    private LocalDateTime createdDate;
+    @Column
+    private Long views;
 
     public void patch(Article article){
         if (article.title != null){
@@ -29,6 +36,13 @@ public class Article {
         }
 
     }
+
+    public String getCreatedDate(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return createdDate.format(formatter);
+    }
+
+
 
 
 

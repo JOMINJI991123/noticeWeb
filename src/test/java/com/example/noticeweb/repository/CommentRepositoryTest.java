@@ -23,7 +23,7 @@ class CommentRepositoryTest {
 
         List<Comment> comments = commentRepository.findByArticleId(articleId);
 
-        Article article = new Article(4L,"hello","world");
+        Article article = new Article(4L,"hello","world",null,null);
         Comment a= new Comment(1L,article,"hello1","first");
         Comment b= new Comment (2L,article,"hello2","second");
         Comment c= new Comment(3L,article,"hello3","third");
@@ -41,7 +41,7 @@ class CommentRepositoryTest {
 
         List<Comment> comments = commentRepository.findByNickname(nickname);
 
-        Article article = new Article(4L,"영화뭐","rrr");
+        Article article = new Article(4L,"영화뭐","rrr",null,null);
         Comment a= new Comment(1L,article,"rrr","라라랜드");
 
         List<Comment> expected = Arrays.asList(a);

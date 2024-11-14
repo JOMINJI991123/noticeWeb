@@ -4,6 +4,7 @@ import com.example.noticeweb.dto.ArticleForm;
 import com.example.noticeweb.dto.CommentDto;
 import com.example.noticeweb.entity.Article;
 import com.example.noticeweb.repository.ArticleRepository;
+import com.example.noticeweb.service.ArticleService;
 import com.example.noticeweb.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @Slf4j
@@ -22,7 +24,10 @@ public class ArticleController {
     @Autowired
     private CommentService commentService;
     @Autowired
+    private ArticleService articleService;
+    @Autowired
     private ArticleRepository articleRepository;
+
     @GetMapping("/articles/new")
     public String newArticleForm() {
         return "articles/new";
@@ -37,18 +42,16 @@ public class ArticleController {
 
     @GetMapping("/articles/{id}")
     public String show(@PathVariable("id") Long id, Model model){
-
-        Article articeEntity = articleRepository.findById(id).orElse(null);
-        List<CommentDto> commentDtos = commentService.comments(id);
-
-        model.addAttribute("commentDtos",commentDtos);
-        model.addAttribute("article", articeEntity);
+        Map<String, Object> response = articleService.show(id);
+        model.addAttribute("commentDtos",response.get("commentDtos"));
+        model.addAttribute("article", response.get("articleEntity"));
         return "articles/show";
     }
 
     @GetMapping("/articles")
     public String index(Model model){
         List<Article> articleEntityList = articleRepository.findAll();
+        log.info(articleEntityList.toString());
         model.addAttribute("articleList",articleEntityList);
         return "articles/index";
     }

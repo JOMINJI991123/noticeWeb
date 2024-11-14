@@ -1,21 +1,25 @@
 {{>layouts/header}}
 
-<div style="margin:40px 80px 40px 80px">
-    <a class="btn btn-primary" style="float: right;" href="articles/new" role="button">New</a>
+<div style="margin:20px 80px 40px 80px">
+    <a class="btn btn-primary" style="float: right; margin:15px;" href="articles/new" role="button">글작성</a>
     <table class="table">
         <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Content</th>
+            <th scope="col">제목</th>
+            <th scope="col">내용</th>
+            <th scope="col" style="text-align: center;">작성일</th>
+            <th scope="col" style="text-align: center;">조회수</th>
         </tr>
         </thead>
         <tbody>
         {{#articleList}}
             <tr>
-                <th>{{id}}</th>
+                <td>{{id}}</td>
                 <td><a href="articles/{{id}}">{{title}}</a></td>
                 <td>{{content}}</td>
+                <td style="text-align: center;">{{createdDate}}</td>
+                <td style="text-align: center;">{{views}}</td>
             </tr>
         {{/articleList}}
         </tbody>
