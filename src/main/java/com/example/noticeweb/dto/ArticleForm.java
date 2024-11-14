@@ -20,7 +20,6 @@ public class ArticleForm {
     private Long views;
 
     public Article toEntity() {
-
         return new Article (null, title, content,null,0l);
     }
 }

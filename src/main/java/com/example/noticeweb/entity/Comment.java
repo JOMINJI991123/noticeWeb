@@ -30,29 +30,23 @@ public class Comment {
 
 
     public static Comment createComment(CommentDto dto, Article article) {
-        if (dto.getId() != null) {
-            throw new IllegalArgumentException("댓글의 id는 없어야한다");
-
-        }
 
         if (dto.getArticleId() != article.getId())
-            throw new IllegalArgumentException("게시글의 id가 잘못되었습니다.");
+            throw new IllegalArgumentException("댓글의 작성 대상 게시글의 아이디와 현재 게시글의 아이디가 다릅니다..");
 
         return new Comment(dto.getId(), article, dto.getNickname(), dto.getBody());
     }
+
 
     public void patch(CommentDto dto) {
         if (this.id != dto.getId()){
             throw new IllegalArgumentException("잘못된 id입력");
         }
-
         if (dto.getNickname() != null){
             this.nickname = dto.getNickname();
         }
-
         if (dto.getBody() != null){
             this.body = dto.getBody();
         }
-
     }
 }

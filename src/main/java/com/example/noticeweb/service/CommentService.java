@@ -20,6 +20,7 @@ public class CommentService {
     private ArticleRepository articleRepository;
 
 
+    // 해당 게시글의 댓글 조회
     public List<CommentDto> comments(Long articleId) {
 
         return commentRepository.findByArticleId(articleId)
@@ -28,6 +29,7 @@ public class CommentService {
                 .collect(Collectors.toList());
     }
 
+    // 댓글 생성
     @Transactional
     public CommentDto create(Long articleId, CommentDto dto) {
         // 대상게시글 존재여부확인
@@ -35,30 +37,27 @@ public class CommentService {
                 .orElseThrow(() -> new IllegalArgumentException("대상 게시글이 없습니다."));
 
         Comment comment = Comment.createComment(dto, article);
-
         Comment created = commentRepository.save(comment);
-
         return CommentDto.createCommentDto(created);
     }
 
+    // 댓글 수정
     @Transactional
     public CommentDto update(Long id, CommentDto dto) {
         Comment target = commentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("댓글이 없습니다."));
 
         target.patch(dto);
-
         Comment updated = commentRepository.save(target);
-
         return CommentDto.createCommentDto(updated);
     }
 
+    // 댓글 삭제
     @Transactional
     public CommentDto delete(Long id) {
         Comment target = commentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("삭제 대상이 없습니다."));
         commentRepository.delete(target);
-
         return CommentDto.createCommentDto(target);
     }
 }
