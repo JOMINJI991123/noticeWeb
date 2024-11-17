@@ -11,11 +11,10 @@
 <br/>
 
 ### ⚙️ 개발 환경
-- `Python 3.11.5`
-- `jQuery 3.6.4`
-- `tensorflow 2.15.0`
-- **IDE** : Visual Studio Code (1.84.2)
-- **Framework** : Flask (2.2.2)
+- `Java 17`
+- **DB** : MySQL
+- **IDE** : IntelliJ IDE
+- **Framework** : spring boot (3.3.5)
 <br/>
 
 ## 📌 주요 기능
@@ -43,7 +42,8 @@
 * 테스트 진행
   * Junit 5를 이용하여 CRUD 기능 테스트
   * Talend API Tester 툴을 사용하여 api 테스트
-  * 
+<br/>
+
 ## 📌 문제 해결
 * 댓글이 달린 게시글을 삭제하려고 할때, 외래키 제약 조건 오류 발생
   * 댓글 테이블에 CASCADE 제약조건을 설정하여 게시글 테이블에 삭제 요청이 생기면 참조하고 있는 댓글 데이터들도 함께 삭제
