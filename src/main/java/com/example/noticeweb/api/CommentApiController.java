@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class CommentApiController {
     }
 
     // 댓글 수정
+    @Transactional
     @PatchMapping("/api/comments/{id}")
     public ResponseEntity<CommentDto> update(@PathVariable("id") Long id,
                                              @RequestBody CommentDto dto) {
@@ -42,6 +44,7 @@ public class CommentApiController {
     }
 
     // 댓글 삭제
+    @Transactional
     @DeleteMapping("/api/comments/{id}")
     public ResponseEntity<CommentDto> update(@PathVariable("id") Long id) {
         CommentDto deleteDto = commentService.delete(id);
